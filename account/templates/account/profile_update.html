@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Update Profile{% endblock %}
+{% load bootstrap3 %}
+
+{% block body_block %}
+
+
+
+
+<!--BEGIN TITLE & BREADCRUMB PAGE-->
+            <div class="page-title-breadcrumb option-demo">
+               <div class="page-header">
+               <div class="page-title mrm">{{ title|title  }} Admin profile</div>
+               </div>
+               <hr>
+               <ol class="breadcrumb page-breadcrumb">
+               <li>
+               <i class="fa fa-home"></i>
+               <a href="{% url 'home' %}">Home</a>
+               </ol>
+               <div class="clearfix"> </div>
+           </div>
+<!--END TITLE & BREADCRUMB PAGE-->
+<div class="page-content">
+
+<form method="POST" action="" enctype="multipart/form-data" >
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <br>
+    <input class="btn btn-success" type="submit" value='{{ title }}'>
+</form>
+</div>
+
+
+{% endblock %}

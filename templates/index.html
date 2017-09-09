@@ -1,0 +1,43 @@
+{% load static %} {% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{title}}{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/icons/favicon.ico' %}">
+    <link rel="apple-touch-icon" href="{% static 'images/icons/favicon.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/icons/favicon-72x72.png'%}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/icons/favicon-114x114.png'%}"> {# Custom CSS#}
+    <link href="{% static 'css/bootstrap3/bootstrap.min.css' %}" rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{% static 'styles/jquery-ui-1.10.4.custom.min.css'%}">
+    <link type="text/css" rel="stylesheet" href="{% static 'styles/font-awesome.min.css'%}">
+    <link type="text/css" rel="stylesheet" href="{% static 'styles/bootstrap.min.css'%}">
+    <link type="text/css" rel="stylesheet" href="{% static 'styles/animate.css'%}">
+    <link type="text/css" rel="stylesheet" href="{% static 'styles/all.css'%}">
+    <link type="text/css" rel="stylesheet" href="{% static 'styles/main.css'%}">
+    <link type="text/css" rel="stylesheet" href="{% static 'styles/style-responsive.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'styles/zabuto_calendar.min.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'styles/pace.css'%}">
+    <link type="text/css" rel="stylesheet" href="{% static 'styles/jquery.news-ticker.css'%}"> </head>
+
+<body style="background: url('{% static 'images/bg/bg.png'%}') center center fixed;">
+    <div class="page-form">
+        <div class="panel panel-blue">
+            <div class="panel-body pan">
+                <form method="POST" class="post-form form-horizontal" enctype="multipart/form-data"> {% csrf_token %}
+                    <div class="form-body pal"> {% for hidden in form.hidden_fields %} {{ hidden }} {% endfor %} {% if form.non_field_errors %}
+                        <div class="alert alert-danger" role="alert"> {% for error in form.non_field_errors %} {{ error }} {% endfor %} </div> {% endif %} {% for field in form.visible_fields %}
+                        <div class="form-group">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label> {% render_field field class="form-control" placeholder=field.name %} {% for error in field.errors %} <span class="help-block">{{ error }}</span> {% endfor %} </div> {% endfor %}
+                        <!--<button type="submit" class="save btn btn-default">Save</button>-->
+                        <input class="btn btn-success" type="submit" value='{{ title }}'>&nbsp; &nbsp; {% if request.path == "/account/login/" %} Don't Have an Account <a href="{% url 'account:register' %}">Register Here.</a> {% else %} Have an Account <a href="{% url 'account:login' %}">Login Here.</a> {% endif %} </form>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
