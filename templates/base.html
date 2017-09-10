@@ -18,6 +18,8 @@
     <!-- Include angular module -->
     <script src="{%static 'dist/js/app.js'%}"></script>
 
+    <!-- Include angular routing module -->
+    <script src="{%static 'dist/js/angular-route.js'%}"></script>
     <!-- Bootstrap Core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
@@ -42,9 +44,9 @@
 
 </head>
 
-<body>
+<body ng-app='manage-skool'>
 
-    <div id="wrapper">
+    <div id="wrapper" ng-controller='emp'>
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">

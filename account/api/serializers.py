@@ -17,7 +17,11 @@ class UserRegistrationSerializer(ModelSerializer):
                    )
 
     def create(self, validated_data):
-
+        '''
+        # below is the hint for AbstractBaseUser DRF generation
+        #http://www.cloudypoint.com/Tutorials/discussion/django-solved-how-to-create-a-new-user-with-django-rest-framework-and-custom-user-model/
+        # user = super(UserRegistrationSerializer, self).create(validated_data)
+        '''
         user = User(
             username = self.validated_data['username'],
             email = self.validated_data['email'],
@@ -31,6 +35,18 @@ class UserRegistrationSerializer(ModelSerializer):
         user.save()
         assign_role(user,self.validated_data['role'])
         return user
-            # below is the hint for AbstractBaseUser DRF generation
-            #http://www.cloudypoint.com/Tutorials/discussion/django-solved-how-to-create-a-new-user-with-django-rest-framework-and-custom-user-model/
-            # user = super(UserRegistrationSerializer, self).create(validated_data)
+
+class UserProfileSerializer(ModelSerializer):
+    '''
+    default details serializers
+    '''
+    class Meta:
+        model = User
+        fields = ("first_name",
+                  "last_name",
+                  "email",
+                  "phone",
+                  "picture",
+                  "institute_name",
+                  "phone",
+                  "address")
