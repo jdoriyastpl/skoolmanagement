@@ -1,5 +1,6 @@
 from django.db import models
 from account.models import User
+from principal.models import Principal
 from django.urls import reverse
 from django.core.validators import RegexValidator
 from django.utils import timezone
@@ -22,3 +23,10 @@ class Teacher(models.Model):
                                 width_field="width_field",
                                 verbose_name="profile picture"
                                 )
+    height_field = models.IntegerField(default=600, null=True)
+    width_field = models.IntegerField(default=600, null=True)
+    def get_absolute_url(self):
+        return reverse("teacher:detail",kwargs={'pk':self.pk})
+
+    def __str__(self):
+        return self.name

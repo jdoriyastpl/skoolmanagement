@@ -20,7 +20,15 @@
                         {% endif %}
                         {% if request.user|has_role:'principal,teacher' %}
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Teachers<span class="fa arrow"></span></a>
+                            <a href="{% url 'teacher:teacher_new' %}"><i class="fa fa-bar-chart-o fa-fw"></i>Teachers<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                               <li>
+                                   <a href="{% url 'teacher:teacher_new' %}">Add new teacher</a>
+                               </li>
+                               <li>
+                                   <a href="{% url 'teacher:teacher_list' %}">Teacher List</a>
+                               </li>
+                           </ul>
                         </li>
                         {% endif %}
                         {% if request.user|has_role:'principal,staff' %}

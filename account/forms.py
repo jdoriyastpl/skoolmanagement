@@ -60,6 +60,6 @@ class UserProfileUpdateForm(forms.ModelForm):
                   "email",
                   "phone",
                   "picture",
-                  "institute_name",
+                  "school",
                   "phone",
                   "address")

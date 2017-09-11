@@ -38,8 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account',
-    'class',
+    'standard',
+    'section',
     'teacher',
+    'student',
     'principal',
     'bootstrap3',
     #Third party apps

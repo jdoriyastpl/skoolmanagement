@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Admin Profile{% endblock %}
+{% block body_block %}
+
+
+<div class="page-content">
+        <div class="col-sm-8 col-md-9">
+
+            <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                <li role="presentation" class="active"><a href="{% url 'teacher:teacher_list' %}">View All</a></li>
+            </ul>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <h3>{{ teacher_detail.name }}</h3>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Teacher Name</th>
+                            <th>Teacher Subject</th>
+                            <th>Teacher Phone Number</th>
+                            <th>Update Profile</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ teacher_detail.name }}</td>
+                                <td>{{ teacher_detail.subject }}</td>
+                                <td>{{ teacher_detail.phone_number }}</td>
+                                <td><a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+</div>
+{% endblock %}
