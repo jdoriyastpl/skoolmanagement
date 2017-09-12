@@ -27,8 +27,8 @@ urlpatterns = [
     url(r'api/account/',include('account.api.urls',namespace='api-account')),
     url(r'account/',include('account.urls',namespace='account')),
     url(r'^teacher/',include('teacher.urls',namespace='teacher')),
-    # url(r'^class/',include('standard.urls'),namespace='standard'),
-
+    url(r'^student/',include('student.urls',namespace='student')),
+    url(r'^standard/',include('standard.urls',namespace='standard')),
 ]
 
 if settings.DEBUG:

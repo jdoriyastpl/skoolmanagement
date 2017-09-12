@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Admin Profile{% endblock %}
+{% block body_block %}
+
+
+<div class="page-content">
+        <div class="col-sm-8 col-md-9">
+
+            <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                <li role="presentation" class="active"><a href="{% url 'teacher:teacher_list' %}">View All</a></li>
+            </ul>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <h3>{{ standard_detail.name }}</h3>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Standard</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ standard_detail.name }}</td>
+                                <td><a class="btn btn-primary" href="{% url 'standard:standard_edit' pk=standard_detail.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+</div>
+{% endblock %}

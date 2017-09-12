@@ -16,6 +16,7 @@ class Student(models.Model):
         ('christian','Christian'),
         ('sikh','Sikh')
     )
+    created_date = models.DateTimeField(auto_now_add=True)
     religion = models.CharField(max_length=10, choices=RELIGION,blank=True,verbose_name="Religion")
     parents_primary_phone_number = models.CharField(max_length=10,unique=True, validators=[RegexValidator(regex='^\d{10}$', message='Length has to be 10', code='Invalid number')])
     secondary_phone_number = models.CharField(max_length=10,unique=True, validators=[RegexValidator(regex='^\d{10}$', message='Length has to be 10', code='Invalid number')])
@@ -30,6 +31,8 @@ class Student(models.Model):
     height_field = models.IntegerField(default=600, null=True)
     width_field = models.IntegerField(default=600, null=True)
 
+    def get_absolute_url(self):
+        return reverse("student:detail",kwargs={'pk':self.pk})
 
     def __str__(self):
         return self.name
