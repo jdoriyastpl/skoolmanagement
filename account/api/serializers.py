@@ -5,7 +5,7 @@ from rolepermissions.roles import assign_role
 from django.contrib.auth import update_session_auth_hash
 
 class UserRegistrationSerializer(ModelSerializer):
-    confirm_password = validated_data.get('confirm_password', None)
+    confirm_password = serializers.CharField(write_only=True, required=False)
     password = serializers.CharField(write_only=True)
     class Meta:
         model = User
@@ -61,6 +61,7 @@ class UserProfileSerializer(ModelSerializer):
         instance.save()
 
         password = validated_data.get('password',None)
+        confirm_password = validated_data.get('confirm_password', None)
         if password:
             instance.set_password(password)
             instance.save()

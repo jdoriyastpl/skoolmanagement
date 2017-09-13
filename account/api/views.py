@@ -2,7 +2,7 @@ from account.api.serializers import UserRegistrationSerializer,UserProfileSerial
 from rest_framework.generics import CreateAPIView,RetrieveUpdateDestroyAPIView
 from account.models import User
 from rest_framework.decorators import api_view, permission_classes
-from .permissions import IsAuthenticatedOrReadOnly
+from account.permissions import IsAuthenticatedOrReadOnly
 
 @permission_classes((IsAuthenticatedOrReadOnly, ))
 class UserRegistrationAPIView(CreateAPIView):
