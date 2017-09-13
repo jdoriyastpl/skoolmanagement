@@ -2,8 +2,10 @@ from rest_framework.serializers import HyperlinkedIdentityField, ModelSerializer
 from account.models import User
 from rest_framework import status, serializers
 from rolepermissions.roles import assign_role
+from django.contrib.auth import update_session_auth_hash
 
 class UserRegistrationSerializer(ModelSerializer):
+    confirm_password = validated_data.get('confirm_password', None)
     password = serializers.CharField(write_only=True)
     class Meta:
         model = User
@@ -13,6 +15,7 @@ class UserRegistrationSerializer(ModelSerializer):
                   "email",
                   "phone",
                   "password",
+                  "confirm_password",
                   "role",
                    )
 
@@ -47,6 +50,20 @@ class UserProfileSerializer(ModelSerializer):
                   "email",
                   "phone",
                   "picture",
-                  "institute_name",
-                  "phone",
+                  "school",
                   "address")
+
+    def update(self,instance, validated_data):
+        instance.phone = validated_data.get('phone',instance.phone)
+        instance.school = validated_data.get('school',instance.school)
+        instance.picture = validated_data.get('picture',instance.picture)
+
+        instance.save()
+
+        password = validated_data.get('password',None)
+        if password:
+            instance.set_password(password)
+            instance.save()
+
+            update_session_auth_hash(self.context.get('request'), instance)
+        return instance

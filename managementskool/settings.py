@@ -68,6 +68,12 @@ ROOT_URLCONF = 'managementskool.urls'
 AUTH_USER_MODEL = 'account.User'
 ROLEPERMISSIONS_MODULE = 'managementskool.roles'
 
+REST_FRAMEWORK = {
+'DEFAULT_PERMISSION_CLASSES': (
+'rest_framework.permissions.IsAuthenticated',
+)
+}
+
 
 TEMPLATES = [
     {
