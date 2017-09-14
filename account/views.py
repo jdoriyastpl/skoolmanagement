@@ -18,7 +18,7 @@ from django.template import loader
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.core.mail import send_mail
-from django.conf import settings
+from managementskool.settings import DEFAULT_FROM_EMAIL
 from django.views.generic import *
 from django.views.generic.edit import FormView
 from .forms import PasswordResetRequestForm,SetPasswordForm
