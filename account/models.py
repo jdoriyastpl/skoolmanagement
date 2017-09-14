@@ -43,7 +43,7 @@ class User(AbstractUser):
                                 width_field="width_field",
                                 verbose_name="profile picture"
                                 )
-    school = models.CharField(max_length=255,blank=False)
+    institute_name = models.CharField(max_length=255,blank=False)
     address = models.CharField(max_length=255,blank=True)
     ROLES = (
         ('principal','Principal'),

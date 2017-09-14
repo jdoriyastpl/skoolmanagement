@@ -7,6 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
+
 class IndexView(LoginRequiredMixin,TemplateView):
     login_url = 'login'
     template_name ='dashboard.html'
