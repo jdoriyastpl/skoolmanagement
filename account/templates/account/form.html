@@ -13,7 +13,7 @@
                                 <div class="form-group">
                                     <label for="{{ field.id_for_label }}">{{ field.label }}</label> {% render_field field class="form-control" placeholder=field.name %} {% for error in field.errors %} <span class="help-block">{{ error }}</span> {% endfor %} </div> {% endfor %}
                                 <!--<button type="submit" class="save btn btn-default">Save</button>-->
-                                <input class="btn btn-success" type="submit" value='{{ title }}'>&nbsp; &nbsp; {% if request.path == "/account/login/" %} Don't Have an Account <a href="{% url 'account:register' %}">Register Here.</a> {% else %} Have an Account <a href="{% url 'account:login' %}">Login Here.</a> {% endif %} </div>
+                                <input class="btn btn-success" type="submit" value='{{ title }}'>&nbsp; &nbsp; {% if request.path == "/account/login/" %} Don't Have an Account <a href="{% url 'account:register' %}">Register Here.</a>{% else %} Have an Account <a href="{% url 'account:login' %}">Login Here.</a> <a href="{% url 'account:reset_password' %}">Forgot Password..??..</a> {% endif %} </div>
                         </form>
                     </div>
                 </div>

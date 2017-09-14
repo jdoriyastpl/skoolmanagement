@@ -22,13 +22,11 @@ from account.views import login_view as init_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^home/$',views.IndexView.as_view(),name='home'),
+     url(r'^home/$',views.IndexView.as_view(),name='home'),
     url(r'^$', init_view ,name='login'),
     url(r'api/account/',include('account.api.urls',namespace='api-account')),
     url(r'account/',include('account.urls',namespace='account')),
-    url(r'^teacher/',include('teacher.urls',namespace='teacher')),
-    url(r'^student/',include('student.urls',namespace='student')),
-    url(r'^standard/',include('standard.urls',namespace='standard')),
+
 ]
 
 if settings.DEBUG:
