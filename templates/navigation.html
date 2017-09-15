@@ -20,7 +20,15 @@
                         {% endif %}
                         {% if request.user|has_role:'principal,teacher' %}
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Teachers<span class="fa arrow"></span></a>
+                            <a href="{% url 'teacher:teacher_new' %}"><i class="fa fa-bar-chart-o fa-fw"></i>Teachers<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                               <li>
+                                   <a href="{% url 'teacher:teacher_new' %}">Add new teacher</a>
+                               </li>
+                               <li>
+                                   <a href="{% url 'teacher:teacher_list' %}">Teacher List</a>
+                               </li>
+                           </ul>
                         </li>
                         {% endif %}
                         {% if request.user|has_role:'principal,staff' %}
@@ -31,9 +39,29 @@
                         {% if request.user|has_role:'principal,teacher' %}
                         <li>
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Students</a>
+                            <ul class="nav nav-second-level">
+                               <li>
+                                   <a href="{% url 'student:student_new' %}">Add new student</a>
+                               </li>
+                               <li>
+                                   <a href="{% url 'student:student_list' %}">Student List</a>
+                               </li>
+                           </ul>
                         </li>
                         {% endif %}
-
+                        {% if request.user|has_role:'principal,teacher' %}
+                        <li>
+                            <a href="{% url 'standard:standard_list' %}"><i class="fa fa-edit fa-fw"></i>Standard</a>
+                            <ul class="nav nav-second-level">
+                               <li>
+                                   <a href="{% url 'standard:standard_new' %}">Add new standard or Class</a>
+                               </li>
+                               <li>
+                                   <a href="{% url 'standard:standard_list' %}">Class List</a>
+                               </li>
+                           </ul>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

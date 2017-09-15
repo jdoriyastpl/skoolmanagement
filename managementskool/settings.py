@@ -28,8 +28,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,8 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account',
-    'class',
+    'standard',
+    'section',
     'teacher',
+    'student',
     'principal',
     'bootstrap3',
     #Third party apps
@@ -68,6 +68,12 @@ ROOT_URLCONF = 'managementskool.urls'
 AUTH_USER_MODEL = 'account.User'
 ROLEPERMISSIONS_MODULE = 'managementskool.roles'
 
+REST_FRAMEWORK = {
+'DEFAULT_PERMISSION_CLASSES': (
+'rest_framework.permissions.IsAuthenticated',
+)
+}
+
 
 TEMPLATES = [
     {
@@ -85,6 +91,7 @@ TEMPLATES = [
     },
 ]
 
+
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'demo@example.com'
 SERVER_EMAIL = 'demo@example.com'
@@ -100,7 +107,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 	to  send for you:
 	https://accounts.google.com/displayunlockcaptcha
 	'''
-
 
 WSGI_APPLICATION = 'managementskool.wsgi.application'
 
