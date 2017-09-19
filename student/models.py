@@ -1,6 +1,7 @@
 from django.db import models
-from standard.models import Standard
 from section.models import Section
+from standard.models import Standard
+from django.urls import reverse
 from django.core.validators import RegexValidator
 # Create your models here.
 PHONE_REGEX ='^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$'

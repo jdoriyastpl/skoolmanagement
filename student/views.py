@@ -3,6 +3,7 @@ from student.forms import StudentForm
 from student.models import Student
 from django.contrib import messages
 from django.utils import timezone
+from section.signals import update_count
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy,reverse
 from django.shortcuts import render,redirect,get_object_or_404
@@ -16,8 +17,18 @@ class StudentCreateView(LoginRequiredMixin,CreateView):
     template_name = 'student/form.html'
     login_url ='login'
     form_class = StudentForm
-    redirect_field_name = 'student/teacher_list.html'
+    redirect_field_name = 'student/student_list.html'
     model = Student
+
+    def form_valid(self,form):
+        print("ffsdfgddgdf")
+        student_name = form.cleaned_data.get('name')
+        student_standard = form.cleaned_data.get('standard')
+        student_section = form.cleaned_data.get('section')
+        print(student_name)
+        update_count.send(sender = Student, name =student_name, standard = student_standard,section =student_section)
+        return super(StudentCreateView,self).form_valid(form)
+
 
 
 
