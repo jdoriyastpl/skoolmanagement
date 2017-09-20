@@ -3,12 +3,15 @@ from section.models import Section
 from standard.models import Standard
 from django.urls import reverse
 from django.core.validators import RegexValidator
+import random as stdlib_random
+import string
 # Create your models here.
 PHONE_REGEX ='^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$'
 class Student(models.Model):
     name = models.CharField(max_length=250)
     standard = models.ForeignKey(Standard, related_name ='student_standard')
     section = models.ForeignKey(Section,related_name ='student_section')
+    student_role_no = models.CharField(max_length=200,default="STU"+str(d.year)+str(d.month)+''.join(stdlib_random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(6)))
     father_name = models.CharField(max_length=255)
     mother_name = models.CharField(max_length=255)
     RELIGION = (

@@ -14,19 +14,25 @@
                         <table class="table table-bordered table-striped table-condensed cf">
                             <thead class='cf'>
                             <tr>
-                              <th>Teacher Name</th>
-                              <th>Teacher Subject</th>
-                              <th>Teacher Phone Number</th>
+                              <th>Student Name</th>
+                              <th>Student Role No</th>
+                              <th>Student's Father Name</th>
+                              <th>Student's Mother Name</th>
+                              <th>Primary Phone Number</th>
+                              <th>Seconday Phone Number</th>
                               <th>Update Profile</th>
                             </tr>
                             </thead>
                             <tbody>
-                              {% for teacher_detail in teacher_list %}
+                              {% for student_detail in student_list %}
                                 <tr>
-                                  <td>{{ teacher_detail.name }}</td>
-                                  <td>{{ teacher_detail.subject }}</td>
-                                  <td>{{ teacher_detail.phone_number }}</td>
-                                  <td><a class="btn btn-primary" href="{% url 'teacher:teacher_edit' pk=teacher_detail.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                  <td>{{ student_detail.name }}</td>
+                                  <td>{{student_detail.student_role_no}}</td>
+                                  <td>{{ student_detail.father_name }}</td>
+                                  <td>{{ student_detail.mother_name }}</td>
+                                  <td>{{ student_detail.parents_primary_phone_number }}</td>
+                                  <td>{{ student_detail.secondary_phone_number }}</td>
+                                  <td><a class="btn btn-primary" href="{% url 'student:student_edit' pk=student_detail.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
                                 </tr>
                                {% endfor %}
                             </tbody>
